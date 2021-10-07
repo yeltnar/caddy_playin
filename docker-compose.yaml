@@ -1,0 +1,22 @@
+# docker run -d \
+# -p 81:80 -p 444:443 -p 8877:2022 \
+# -v $PWD/caddy/data:/data \
+# -v $PWD/caddy/config:/config \
+# -v $PWD/caddy/Caddyfile:/etc/caddy/Caddyfile \
+# --name caddy \
+#  caddy
+
+version: "3"
+services:
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    ports:
+      - 81:80 
+      - 444:443 
+      - 2022:2022
+      - 8123:8123
+    volumes: 
+      - ${PWD}/caddy/data:/data
+      - ${PWD}/caddy/config:/config
+      - ${PWD}/caddy/Caddyfile:/etc/caddy/Caddyfile
